@@ -22,13 +22,12 @@ class MySequential(nn.Module):
 
 
 if __name__ == '__main__':
-    args = OrderedDict([
-                  ('conv1', nn.Conv2d(3,20,(5,5))),
-                  ('relu1', nn.ReLU()),
-                  ('conv2', nn.Conv2d(20,64,(5,5))),
-                  ('relu2', nn.ReLU())
-                ])
+    args = nn.Sequential(
+        nn.Linear(784, 256),
+        nn.ReLU(),
+        nn.Linear(256, 10),
+    )
     model = MySequential(args)
-    x = torch.randn(1,3,224,224)
+    x = torch.randn(1,784)
     print(model)
     print(model(x).shape)
