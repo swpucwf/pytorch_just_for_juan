@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://G:/Assignment2/Assignment2/.idea/Assignment2.iml" filepath="G:/Assignment2/Assignment2/.idea/Assignment2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pytorch_just_for_juan.iml" filepath="$PROJECT_DIR$/.idea/pytorch_just_for_juan.iml" />
+    </modules>
+  </component>
+</project>
