@@ -12,16 +12,39 @@ class MySequential(nn.Module):
         else:  # 传入的是一些Module
             for idx, module in enumerate(args):
                 self.add_module(str(idx), module)
+
     def forward(self, x):
+
+        # x
+        # nsv
+        # nchw
+        # n,c,t,h,w
+
+        # reshape   ------> nchw ----> nsv
         # self._modules返回一个 OrderedDict，保证会按照成员添加时的顺序遍历成
-        for module in self._modules.values():
+        # 形状变换。conv + bn + relu + 。。。。。。 + avgpool or nn.Linear()
+
+        # 10,softmax
+        temp = None
+        for name,value in self._modules.items():
             # self._modules.values 保存的是key-value
-            print(module)
-            x = module(x)
-        return x
+            print(name)
+            print(value)
+            print(value[0])
+            x = value(x)
+            if name=="0":
+                temp = value[0](x)
+
+
+        #
+        return temp,x
+
+
+
 
 
 if __name__ == '__main__':
+
     args = nn.Sequential(
         nn.Linear(784, 256),
         nn.ReLU(),
@@ -29,5 +52,10 @@ if __name__ == '__main__':
     )
     model = MySequential(args)
     x = torch.randn(1,784)
-    print(model)
-    print(model(x).shape)
+
+    # print(model(x))
+    # print(model.forward(x))
+    # print(model())
+    print(model(x))
+    # shape
+    # maxpooling

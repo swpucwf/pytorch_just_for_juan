@@ -1,5 +1,6 @@
 import torch
 from torch import nn
+import torch.nn.functional as f
 
 
 class model(nn.Module):
@@ -18,6 +19,7 @@ class model(nn.Module):
 
 
 if __name__ == '__main__':
+    # key-value
     args = nn.ModuleDict({
         'linear': nn.Linear(784, 256),
         'act': nn.ReLU()
@@ -26,5 +28,9 @@ if __name__ == '__main__':
     # 添加
 
     net = model(args)
+
+
+
+
     x = torch.randn(1,784)
     print(net(x).shape)

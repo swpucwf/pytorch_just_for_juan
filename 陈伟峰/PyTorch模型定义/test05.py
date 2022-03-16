@@ -10,10 +10,15 @@ class Model(nn.Module):
         self.output = nn.Softmax(dim=1)
 
     def forward(self, x, add_variable):
+
         x = self.net(x)
+
         x = torch.cat((self.dropout(self.relu(x)), add_variable.unsqueeze(1)), 1)
+
         x = self.fc_add(x)
+
         x = self.output(x)
+
         return x
 if __name__ == '__main__':
     import torchvision.models as models
