@@ -353,3 +353,7 @@ def forward(self, x):
         output = model(x)
         ...
 ```
+
+还有个很简单的方法,气不气~
+
+![image-20220317110359656](../images/ch2.assets/image-20220317110359656.png)
